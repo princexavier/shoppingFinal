@@ -1,0 +1,27 @@
+<h1>Shipping</h1>
+
+<div class="row">
+  <div class="col-6">
+    <form (ngSubmit)="placeOrder(checkout)" #checkout="ngForm">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input ngModel #name="ngModel" name="name" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Address</label>
+        <input  ngModel #address="ngModel" name="address" type="text" class="form-control" id="exampleInputPassword1" placeholder="Line 1">
+        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Line 2">
+  
+      </div>
+      <div class="form-group">
+        <label class="form-check-label" for="exampleCheck1">City</label>
+          <input ngModel #city="ngModel" name="address" type="text" class="form-control" id="exampleInputPassword1" placeholder="Line 2">
+      </div>
+      <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+  </div>
+  <div class="col-6">
+      <app-shoppingcartsummary [cart]="cart"></app-shoppingcartsummary>
+  </div>
+</div>

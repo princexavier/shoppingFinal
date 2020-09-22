@@ -1,0 +1,66 @@
+<h1>Cart</h1>
+<ng-container>
+  <p>
+    You have {{allItemsCount}} items in your cart
+  </p>
+</ng-container>
+
+<table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Product</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+
+    </tr>
+  </thead>
+  <tbody *ngIf="totalAmount>0 && items; else empty">
+    <ng-container >
+      <tr *ngFor="let item of productsKeys;let i =index">
+        <ng-container *ngIf="items">
+          <ng-container *ngIf="items[item]['quantity'] > 0">
+            <td scope="row">{{i+1}}</td>
+            <td>{{items[item]['product']['title']}}</td>
+            <td>{{items[item]['quantity']}}</td>
+            <!-- <td>
+              <product-quantity [product]="items[item]['product']" [shopping-cart]="shoppingCart"[total]="total"></product-quantity>
+
+            </td> -->
+            <td>{{ items[item]['quantity'] * items[item]['product']['price']}}</td>
+
+          </ng-container>
+        </ng-container>
+
+
+      </tr>
+    </ng-container>
+
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Total :</th>
+      <th *ngIf="totalAmount">{{totalAmount | currency:'INR'}}</th>
+      <th *ngIf="total">{{total | currency:'INR'}}</th>
+
+    </tr>
+  </tbody>
+  <tfoot>
+   
+  </tfoot>
+
+  <ng-template #empty>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>No Record Found</td>
+      <td></td>
+  
+    </tr>
+  </ng-template>
+  
+</table>
+<a  class="btn btn-danger"(click)="clearCart()">Clear Shopping Cart</a>
+
+<a *ngIf="items" routerLink="/shopping-cart/admin/checkout" class="btn btn-primary">Checkout</a>
+

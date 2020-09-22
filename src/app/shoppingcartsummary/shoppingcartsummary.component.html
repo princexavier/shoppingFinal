@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Order Summary</h5>
+      <p *ngIf="cart" class="card-text">You Have {{allItemsCount}} items in your shopping card </p>
+        <ul class="list-group">
+            <li *ngFor="let product of products" class="list-group-item">
+                {{product['quantity']}} x  {{product['title']}} 
+                <span style="float: right;">{{product['quantity'] * product['price'] | currency:'INR'}}</span>
+            </li>
+            <li class="list-group-item">
+                Total : <span style="float: right;">{{totalAmount | currency:'INR'}}</span>
+            </li>
+        </ul>
+    </div>
+  </div>

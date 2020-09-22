@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+    <thead> 
+        <th>#</th>
+        <th>Customer</th>
+        <th>Date Placed</th>
+        <th>View</th>
+    </thead>
+    <tbody> 
+        <tr *ngIf="orders" >
+            <td>1</td>
+            <td>{{orders['userName']}}</td>
+            <td>{{orders.datePlaced | date}}</td>
+            <td><a routerLink="">View</a></td>
+        </tr>
+    </tbody>
+</table>
